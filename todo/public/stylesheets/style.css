@@ -1,0 +1,16 @@
+body {
+	width: 900px;
+}
+header, nav, footer  {
+	width: 100%;
+	text-align: center;
+}
+header, footer {
+	background: skyblue;
+}
+h2 {
+	margin: 10px 0px;
+}
+#content {
+	height: 400px;
+}
