@@ -3,7 +3,7 @@
 require_once('../private/initialize.php');
 $page_title = 'TODO';
 $h2 = 'to-do list';
-include(SHARED_PATH . 'header.php');
+include(SHARED_PATH . '/header.php');
 ?>
 
 
@@ -16,4 +16,4 @@ include(SHARED_PATH . 'header.php');
 </div>
 
 
-<?php include(SHARED_PATH . 'footer.php'); ?>
+<?php include(SHARED_PATH . '/footer.php'); ?>
