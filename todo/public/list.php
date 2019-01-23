@@ -1,8 +1,9 @@
 <?php
 // always use static strings with include/require. never dynamic!
 require_once('../private/initialize.php');
-
-include('../private/shared/header.php');
+$page_title = 'TODO';
+$h2 = 'to-do list';
+include(SHARED_PATH . 'header.php');
 ?>
 
 
@@ -15,4 +16,4 @@ include('../private/shared/header.php');
 </div>
 
 
-<?php include('../private/shared/footer.php'); ?>
+<?php include(SHARED_PATH . 'footer.php'); ?>

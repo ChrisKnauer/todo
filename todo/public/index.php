@@ -1,14 +1,19 @@
 <?php  // root of our app ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>login</title>
-</head>
-<body>
-	<header>
-		<h1>login: coming soon</h1>
-	</header>
-</body>
-</html>
+<?php 
+	require_once('../private/initialize.php');
+	$page_title = 'Login';
+	$h2 = 'login: coming soon';
+	include(SHARED_PATH . 'header.php');
+?>
+
+
+<div id='content'>
+
+
+</div>
+
+
+<?php
+	include(SHARED_PATH . 'footer.php');
+?>
