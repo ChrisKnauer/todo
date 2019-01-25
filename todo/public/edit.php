@@ -7,4 +7,4 @@ if (isset($_GET['id'])) {
 	$id = 1;
 }
 
-echo $id;
+echo h($id);
