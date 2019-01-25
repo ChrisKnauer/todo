@@ -1,5 +1,7 @@
 <?php
 
+require_once('../private/initialize.php');
+
 // set default id if no id is sent
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];

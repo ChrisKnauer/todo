@@ -1,5 +1,8 @@
 <?php   // initialize loads code from functions.php and other libraries, so we only need to include initialize in other pages
 
+// output buffering
+ob_start();
+
 // define constants for file-paths. saves us time typing file-paths. 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
