@@ -33,7 +33,7 @@ $items = [
 	?>
 		<tr>
 			<td><?php echo $item["description"]; ?></td>
-			<td><a href="<?php echo WWW_ROOT . "/edit.php?id=" . $item['id']; ?>">edit</a></td> <!-- send item id to edit page -->
+			<td><a href="<?php echo WWW_ROOT . "/edit.php?id=" . urlencode($item['id'])  ; ?>">edit</a></td> <!-- send item id to edit page -->
 			<td><a href="">delete</a></td>
 		</tr>
 	<?php }; // end loop ?>
