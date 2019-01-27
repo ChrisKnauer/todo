@@ -1,6 +1,11 @@
 <?php
 // always use static strings with include/require. never dynamic!
 require_once('../private/initialize.php');
+
+$item_set = find_all_items();
+
+
+
 $page_title = 'TODO';
 $h2 = 'to-do list';
 include(SHARED_PATH . '/header.php');
@@ -19,7 +24,8 @@ $items = [
 <div id="content">
 
 	<form action="" method="post">
-		<input type="text" name="description"> <input type="submit" value="Add item">
+		<input type="text" name="description"> 
+		<input type="submit" value="Add item">
 	</form>
 
 
