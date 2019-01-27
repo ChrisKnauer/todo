@@ -18,7 +18,9 @@ $items = [
 
 <div id="content">
 
-	<input type="text" name="item"> <a href="">add item</a>
+	<form action="" method="post">
+		<input type="text" name="description"> <input type="submit" value="Add item">
+	</form>
 
 
 	<table>
