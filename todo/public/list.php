@@ -5,16 +5,10 @@ require_once('../private/initialize.php');
 $item_set = find_all_items();
 
 
-
 $page_title = 'TODO';
 $h2 = 'to-do list';
 include(SHARED_PATH . '/header.php');
-// create temporary db stand in 
-$items = [
-	["id" => "1", "description" => "clean room"],
-	["id" => "2", "description" => "buy groceries"],
-	["id" => "3", "description" => "go for a jog"]
-]
+
 ?>
 
 <nav>
@@ -36,17 +30,19 @@ $items = [
 			<th></th>
 		</tr>
 
-	<?php // loop through fake-db
-		foreach($items as $item) {
+	<?php // loop through result set
+		while ($item = mysqli_fetch_assoc($item_set)) {
 	?>
 		<tr>
-			<td><?php echo h($item["description"]); ?></td>
+			<td><?php echo h($item['description']); ?></td>
 			<td><a href="<?php echo WWW_ROOT . "/edit.php?id=" . h(urlencode($item['id']))  ; ?>">edit</a></td> <!-- send item id to edit page -->
 			<td><a href="">delete</a></td>
 		</tr>
 	<?php }; // end loop ?>
 
 	</table>
+	<!-- free up result set -->
+	<?php  mysqli_free_result($item_set); ?>
 
 </div>
 
