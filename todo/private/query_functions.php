@@ -17,3 +17,16 @@ function find_item_by_id($id) {
 	mysqli_free_result($result);
 	return $item; // returns assoc. array
 }
+function insert_item($description) {
+	global $db;
+
+	$sql = "INSERT INTO items ";
+	$sql .= "(description) ";
+	$sql .= "VALUES (";
+	$sql .= "'" . $description . "'";
+	$sql .= ")";
+	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
+	if($result) {
+		return true;
+	}
+}
