@@ -12,13 +12,15 @@ if (isset($_GET['id'])) {
 
 echo h($id);
 
+$item = find_item_by_id($id);
+
 ?>
 
 <div id='content'>
 
 	<form>
 		
-		<input type="text" name="">
+		<input type="text" name="" value="<?php echo h($item['description']) ?>">
 		<button>Edit</button>
 
 	</form>
