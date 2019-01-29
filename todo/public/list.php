@@ -2,9 +2,10 @@
 // always use static strings with include/require. never dynamic!
 require_once('../private/initialize.php');
 
-
-insert_item($_POST['description']); // $result is true/false
-
+if(is_post_request()) {
+	
+	insert_item($_POST['description']); // $result is true/false
+}
 
 $item_set = find_all_items();
 
