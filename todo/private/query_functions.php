@@ -1,7 +1,7 @@
 <?php  
 
 function find_all_items() {
-	global $db;
+	global $db; // makes db-connection
 
 	$sql = "SELECT * FROM items";
 	$result = mysqli_query($db, $sql);
@@ -26,6 +26,20 @@ function insert_item($description) {
 	$sql .= "'" . $description . "'";
 	$sql .= ")";
 	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
+	if($result) {
+		return true;
+	}
+}
+function update_item($item) {
+	global $db;
+
+	$sql = "UPDATE items SET ";
+	$sql .= "description='" . $item['description'] . "' ";
+	$sql .= "WHERE id='" . $item['id'] . "' ";
+	$sql .= "LIMIT 1";
+
+	$result = mysqli_query($db, $sql);
+	
 	if($result) {
 		return true;
 	}

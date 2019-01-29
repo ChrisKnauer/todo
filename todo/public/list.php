@@ -3,8 +3,9 @@
 require_once('../private/initialize.php');
 
 if(is_post_request()) {
-	
-	insert_item($_POST['description']); // $result is true/false
+
+	$item_description = $_POST['description'];
+	insert_item($item_description); // $result is true/false
 }
 
 $item_set = find_all_items();
