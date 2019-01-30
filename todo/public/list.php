@@ -4,8 +4,20 @@ require_once('../private/initialize.php');
 
 if(is_post_request()) {
 
-	$item_description = $_POST['description'];
-	insert_item($item_description); // $result is true/false
+	// if add-item-form has been submitted
+	if (isset($_POST['description'])) {
+		
+		$item_description = $_POST['description'];
+		insert_item($item_description); // $result is true/false
+	}
+
+	// if delete-item-form has been submitted
+	if (isset($_POST['delete'])) {
+
+		$id = $_GET['id'];
+		delete_item($id);
+		header("Location: " . WWW_ROOT . "/list.php");
+	}
 }
 
 $item_set = find_all_items();
@@ -41,7 +53,12 @@ include(SHARED_PATH . '/header.php');
 		<tr>
 			<td><?php echo h($item['description']); ?></td>
 			<td><a href="<?php echo WWW_ROOT . "/edit.php?id=" . h(urlencode($item['id']))  ; ?>">edit</a></td> <!-- send item id to edit page -->
-			<td><a href="">delete</a></td>
+			<td>
+				<form action="<?php echo WWW_ROOT . '/list.php?id=' . h(urlencode($item['id'])) ?>" method="post">
+					<input name="delete" type="submit" value="Delete">
+				</form>
+
+			</td>
 		</tr>
 	<?php }; // end loop ?>
 
