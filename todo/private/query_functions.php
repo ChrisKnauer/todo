@@ -5,6 +5,7 @@ function find_all_items() {
 
 	$sql = "SELECT * FROM items";
 	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
 	return $result;
 }
 function find_item_by_id($id) {
@@ -13,6 +14,7 @@ function find_item_by_id($id) {
 	$sql = "SELECT * FROM items ";
 	$sql .= "WHERE id='" . $id . "'";
 	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
 	$item = mysqli_fetch_assoc($result);
 	mysqli_free_result($result);
 	return $item; // returns assoc. array
