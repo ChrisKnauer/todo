@@ -30,6 +30,10 @@ function insert_item($description) {
 	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
 	if($result) {
 		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
 	}
 }
 function update_item($item) {
@@ -44,6 +48,10 @@ function update_item($item) {
 	
 	if($result) {
 		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
 	}
 }
 function delete_item($id) {
@@ -57,5 +65,9 @@ function delete_item($id) {
 
 	if($result) {
 		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
 	}
 }
