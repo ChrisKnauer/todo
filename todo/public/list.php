@@ -14,7 +14,7 @@ if(is_post_request()) {
 			header("Location: " . WWW_ROOT . "/list.php");
 		} else {
 			$errors = $result;
-			var_dump($errors); //testing
+			//var_dump($errors); //testing
 		}
 	}
 
@@ -40,6 +40,8 @@ include(SHARED_PATH . '/header.php');
 </nav>
 
 <div id="content">
+
+	<?php echo display_errors($errors); ?>
 
 	<form action="<?php echo WWW_ROOT . '/list.php'; ?>" method="post">
 		<input type="text" name="description"> 
