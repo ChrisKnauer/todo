@@ -19,8 +19,24 @@ function find_item_by_id($id) {
 	mysqli_free_result($result);
 	return $item; // returns assoc. array
 }
+function validate_item($description) {
+	$errors = [];
+
+	if(is_blank($description)) {
+		$errors[] = "Description cannot be blank.";
+	} elseif(!has_length($description, ['min' => 2, 'max' => 50])) {
+		$errors[] = "Description must be between 2 and 50 characters.";
+	}
+
+	return $errors;
+}
 function insert_item($description) {
 	global $db;
+
+	$errors = validate_item($description);
+	if(!empty($errors)) {
+		return $errors;
+	}
 
 	$sql = "INSERT INTO items ";
 	$sql .= "(description) ";
@@ -38,6 +54,11 @@ function insert_item($description) {
 }
 function update_item($item) {
 	global $db;
+
+	$errors = validate_item($item['description']);
+	if(!empty($errors)){
+		return $errors;
+	}
 
 	$sql = "UPDATE items SET ";
 	$sql .= "description='" . $item['description'] . "' ";

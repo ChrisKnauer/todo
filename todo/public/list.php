@@ -8,9 +8,14 @@ if(is_post_request()) {
 	if (isset($_POST['description'])) {
 		
 		$item_description = $_POST['description'];
-		insert_item($item_description); // $result is true/false
-		// re-direct prevents re-submission on re-load
-		header("Location: " . WWW_ROOT . "/list.php");
+		$result = insert_item($item_description); // $result is true/false
+		if($result === true) {
+			// re-direct prevents re-submission on re-load
+			header("Location: " . WWW_ROOT . "/list.php");
+		} else {
+			$errors = $result;
+			var_dump($errors); //testing
+		}
 	}
 
 	// if delete-item-form has been submitted

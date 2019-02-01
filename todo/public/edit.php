@@ -19,9 +19,16 @@ if(is_post_request()) {
 	$item['description'] = $_POST['description'];
 
 	// call update_item
-	update_item($item);
-	// redirect to list.php
-	header("Location:" . WWW_ROOT . "/list.php");
+	$result = update_item($item);
+
+	if($result === true) {
+		// redirect to list.php
+		header("Location:" . WWW_ROOT . "/list.php");
+	} else {
+		$errors = $result;
+		var_dump($errors); // testing 
+	}
+
 
 } else {
 	// if it's not a post request...use the one from db and use it to insert into form field
