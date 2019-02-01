@@ -12,7 +12,7 @@ function find_item_by_id($id) {
 	global $db;
 
 	$sql = "SELECT * FROM items ";
-	$sql .= "WHERE id='" . $id . "'";
+	$sql .= "WHERE id='" . db_escape($db, $id) . "'";
 	$result = mysqli_query($db, $sql);
 	confirm_result_set($result);
 	$item = mysqli_fetch_assoc($result);
@@ -41,7 +41,7 @@ function insert_item($description) {
 	$sql = "INSERT INTO items ";
 	$sql .= "(description) ";
 	$sql .= "VALUES (";
-	$sql .= "'" . $description . "'";
+	$sql .= "'" . db_escape($db, $description) . "'";
 	$sql .= ")";
 	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
 	if($result) {
@@ -61,8 +61,8 @@ function update_item($item) {
 	}
 
 	$sql = "UPDATE items SET ";
-	$sql .= "description='" . $item['description'] . "' ";
-	$sql .= "WHERE id='" . $item['id'] . "' ";
+	$sql .= "description='" . db_escape($db, $item['description']) . "' ";
+	$sql .= "WHERE id='" . db_escape($db, $item['id']) . "' ";
 	$sql .= "LIMIT 1";
 
 	$result = mysqli_query($db, $sql);
@@ -79,7 +79,7 @@ function delete_item($id) {
 	global $db;
 
 	$sql = "DELETE FROM items ";
-	$sql .= "WHERE id='" . $id . "' ";
+	$sql .= "WHERE id='" . db_escape($db, $id) . "' ";
 	$sql .= "LIMIT 1";
 
 	$result = mysqli_query($db, $sql);

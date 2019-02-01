@@ -15,6 +15,10 @@ function db_disconnect($connection) {
 	}
 }
 
+function db_escape($connection, $string) {
+	return mysqli_real_escape_string($connection, $string);
+}
+
 function confirm_db_connect() {
 	if(mysqli_connect_errno()) {
 		$msg = "Database connection failed: ";
