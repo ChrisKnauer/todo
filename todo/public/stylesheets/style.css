@@ -1,7 +1,7 @@
 body {
 	width: 900px;
 }
-header, nav, footer  {
+header, nav, footer, .user  {
 	width: 100%;
 	text-align: center;
 }

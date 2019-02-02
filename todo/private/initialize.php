@@ -3,6 +3,9 @@
 // output buffering
 ob_start();
 
+// turn on sessions
+session_start();
+
 // define constants for file-paths. saves us time typing file-paths. 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));

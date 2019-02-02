@@ -2,6 +2,8 @@
 // always use static strings with include/require. never dynamic!
 require_once('../private/initialize.php');
 
+$username = $_SESSION['username'];
+
 if(is_post_request()) {
 
 	// if add-item-form has been submitted
@@ -35,11 +37,15 @@ include(SHARED_PATH . '/header.php');
 
 ?>
 
+<div class="user"> User: <?php echo $username; ?></div>
+
 <nav>
 	<a href="logout.php">Logout</a>
 </nav>
 
 <div id="content">
+
+	
 
 	<?php echo display_errors($errors); ?>
 
