@@ -3,6 +3,7 @@
 require_once('../private/initialize.php');
 $h2 = 'Edit Item';
 include(SHARED_PATH . '/header.php');
+include(SHARED_PATH . '/header_login.php');
 // if no id is set redirect to list.php
 if (!isset($_GET['id'])) {
 	header("Location:" . WWW_ROOT . "/list.php");

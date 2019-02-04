@@ -13,3 +13,5 @@ if(!isset($page_title)) {$page_title = 'To-Do List';}
 	<header>
 		<h2><?php echo h($h2) ?></h2>
 	</header>
+
+	<?php echo display_session_message(); ?>

@@ -136,7 +136,7 @@ function validate_user($user, $options=[]) {
 
 	if(is_blank($user['username'])) {
 		$errors[] = "Username cannot be blank.";
-	} elseif(!has_length($user['username'], ['min' => 4, 'max' => 50])) {
+	} elseif(!has_length($user['username'], ['min' => 3, 'max' => 50])) {
 		$errors[] = "Username must be between 4 and 50 characters.";
 	} elseif (!has_unique_username($user['username'], $user['id'] ?? 0)) {
 		$errors[] = "Username not allowed. Try another.";
@@ -145,12 +145,12 @@ function validate_user($user, $options=[]) {
 	if($password_required) {
 		if(is_blank($user['password'])) {
 			$errors[] = "Password cannot be blank.";
-		} elseif(!has_length($user['password'], ['min' => 6])) {
+		} elseif(!has_length($user['password'], ['min' => 5])) {
 			$errors[] = "Password must have at least 6 characters.";
 		}
 
 		if(is_blank($user['confirm_password'])) {
-			$errors[] = "Confirm passowrd cannot be blank.";
+			$errors[] = "Confirm password cannot be blank.";
 		} elseif ($user['password'] !== $user['confirm_password']) {
 			$errors[] = 'Password and confirm passowrd must match.';
 		}
