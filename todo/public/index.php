@@ -19,7 +19,7 @@
 	$h2 = 'Login';
 	include(SHARED_PATH . '/header.php');
 ?>
-<!-- users db created -->
+
 
 <div id='content'>
 

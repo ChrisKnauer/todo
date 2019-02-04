@@ -1,5 +1,7 @@
 <?php  
-
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// CRUD FOR TO DO LIST
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 function find_all_items() {
 	global $db; // makes db-connection
 
@@ -80,6 +82,141 @@ function delete_item($id) {
 
 	$sql = "DELETE FROM items ";
 	$sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+	$sql .= "LIMIT 1";
+
+	$result = mysqli_query($db, $sql);
+
+	if($result) {
+		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
+	}
+}
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// CRUD FOR USERS
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+function find_all_users() {
+	global $db; // makes db-connection
+
+	$sql = "SELECT * FROM users ";
+	$sql .= "ORDER BY username ASC";
+	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
+	return $result;
+}
+function find_user_by_id($id) {
+	global $db;
+
+	$sql = "SELECT * FROM users ";
+	$sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+	$sql .= "LIMIT 1";
+	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
+	$user = mysqli_fetch_assoc($result);
+	mysqli_free_result($result);
+	return $user; // returns assoc. array
+}
+function find_user_by_username($username) {
+	global $db;
+
+	$sql = "SELECT * FROM users ";
+	$sql .= "WHERE username='" . db_escape($db, $username) . "' ";
+	$sql .= "LIMIT 1";
+	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
+	$user = mysqli_fetch_assoc($result);
+	mysqli_free_result($result);
+	return $user; // returns assoc. array
+}
+function validate_user($user, $options=[]) {
+	// username section
+	$password_required = $options['password_required'] ?? true;
+
+	if(is_blank($user['username'])) {
+		$errors[] = "Username cannot be blank.";
+	} elseif(!has_length($user['username'], ['min' => 4, 'max' => 50])) {
+		$errors[] = "Username must be between 4 and 50 characters.";
+	} elseif (!has_unique_username($user['username'], $user['id'] ?? 0)) {
+		$errors[] = "Username not allowed. Try another.";
+	}
+	// password section
+	if($password_required) {
+		if(is_blank($user['password'])) {
+			$errors[] = "Password cannot be blank.";
+		} elseif(!has_length($user['password'], ['min' => 6])) {
+			$errors[] = "Password must have at least 6 characters.";
+		}
+
+		if(is_blank($user['confirm_password'])) {
+			$errors[] = "Confirm passowrd cannot be blank.";
+		} elseif ($user['password'] !== $user['confirm_password']) {
+			$errors[] = 'Password and confirm passowrd must match.';
+		}
+	}
+
+	return $errors;
+}
+function insert_user($user) {
+	global $db;
+
+	$errors = validate_user($user);
+	if(!empty($errors)) {
+		return $errors;
+	}
+
+	$hased_password = password_hash($admin['password'], PASSWORD_BCRYPT);
+
+	$sql = "INSERT INTO users ";
+	$sql .= "(username, hashed_password) ";
+	$sql .= "VALUES (";
+	$sql .= "'" . db_escape($db, $user['username']) . "',";
+	$sql .= "'" . db_escape($db, $hashed_password) . "'";
+	$sql .= ")";
+	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
+	if($result) {
+		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
+	}
+}
+function update_user($user) {
+	global $db;
+
+	$password_sent = !is_blank($user['password']);
+
+	$errors = validate_user($user, ['password_required' => $password_sent]);
+	if(!empty($errors)){
+		return $errors;
+	}
+
+	$hased_password = password_hash($admin['password'], PASSWORD_BCRYPT);
+
+	$sql = "UPDATE users SET ";
+	if($password_sent) {
+		$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "', ";
+	}
+	$sql .= "username='" . db_escape($db, $user['username']) . "' ";
+	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
+	$sql .= "LIMIT 1";
+	$result = mysqli_query($db, $sql);
+	
+	if($result) {
+		return true;
+	} else {
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
+	}
+}
+function delete_user($user) {
+	global $db;
+
+	$sql = "DELETE FROM users ";
+	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
 	$sql .= "LIMIT 1";
 
 	$result = mysqli_query($db, $sql);
