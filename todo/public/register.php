@@ -15,9 +15,9 @@ if(is_post_request()) {
 
 	$result = insert_user($user);
 	if($result === true) {
-		$new_id = mysqli_insert_id($db);
+		$new_id = mysqli_insert_id($db); // TODO take out new id
 		$_SESSION['message'] = 'User created.';
-		header("Location: " . WWW_ROOT . "/list.php?id=" . $new_id);
+		header("Location: " . WWW_ROOT . "/list.php?id=" . $new_id); // TODO take out new id
 	} else {
 		$errors = $result;
 	}
