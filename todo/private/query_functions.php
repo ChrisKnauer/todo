@@ -212,11 +212,11 @@ function update_user($user) {
 		exit;
 	}
 }
-function delete_user($user) {
+function delete_user($id) {
 	global $db;
 
 	$sql = "DELETE FROM users ";
-	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
+	$sql .= "WHERE id='" . db_escape($db, $id) . "' ";
 	$sql .= "LIMIT 1";
 
 	$result = mysqli_query($db, $sql);
