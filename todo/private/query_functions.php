@@ -166,7 +166,7 @@ function insert_user($user) {
 		return $errors;
 	}
 
-	$hased_password = password_hash($admin['password'], PASSWORD_BCRYPT);
+	$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
 	$sql = "INSERT INTO users ";
 	$sql .= "(username, hashed_password) ";
@@ -193,7 +193,7 @@ function update_user($user) {
 		return $errors;
 	}
 
-	$hased_password = password_hash($admin['password'], PASSWORD_BCRYPT);
+	$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
 	$sql = "UPDATE users SET ";
 	if($password_sent) {
