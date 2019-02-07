@@ -2,6 +2,8 @@
 
 require_once("../private/initialize.php");
 
+require_login();
+
 $page_title = 'USER';
 $h2 = 'User details';
 include(SHARED_PATH . '/header.php');

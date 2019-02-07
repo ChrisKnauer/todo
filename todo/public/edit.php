@@ -1,6 +1,9 @@
 <?php
 
 require_once('../private/initialize.php');
+
+require_login();
+
 $h2 = 'Edit Item';
 include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');

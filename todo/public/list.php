@@ -2,6 +2,8 @@
 // always use static strings with include/require. never dynamic!
 require_once('../private/initialize.php');
 
+require_login();
+
 if(is_post_request()) {
 
 	// if add-item-form has been submitted
