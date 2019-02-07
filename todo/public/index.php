@@ -4,6 +4,8 @@
 
 require_once('../private/initialize.php');
 
+log_out_user();
+
 $errors = [];
 $username = '';
 $password = '';
