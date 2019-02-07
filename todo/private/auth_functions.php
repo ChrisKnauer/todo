@@ -19,3 +19,10 @@ function require_login() {
 		// do nothing, let rest of page proceed
 	}
 }
+function log_out_user() {
+	unset($_SESSION['user_id']);
+	unset($_SESSION['last_login']);
+	unset($_SESSION['username']);
+	// session_destroy();  // optional
+	return true;
+}
