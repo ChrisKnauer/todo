@@ -130,7 +130,7 @@ function find_user_by_username($username) {
 	mysqli_free_result($result);
 	return $user; // returns assoc. array
 }
-function validate_user($user, $currentpassword=1) { //new
+function validate_user($user, $current_password=1) { //new
 
 	// username section
 	if(is_blank($user['username'])) {
@@ -141,6 +141,12 @@ function validate_user($user, $currentpassword=1) { //new
 		$errors[] = "Username not allowed. Try another.";
 	}
 	// password section
+
+	//new
+	if(is_blank($current_password)) {
+		$errors[] = "Current password cannot be blank.";
+	}
+
 	if(is_blank($user['password'])) {
 		$errors[] = "Password cannot be blank.";
 	} elseif(!has_length($user['password'], ['min' => 5])) {
@@ -151,12 +157,34 @@ function validate_user($user, $currentpassword=1) { //new
 	} elseif ($user['password'] !== $user['confirm_password']) {
 		$errors[] = 'Password and confirm password must match.';
 	}
-	//new
-	if(is_blank($currentpassword)) {
-		$errors[] = "Current password cannot be blank.";
-	}
 
-	return $errors;
+	// new
+	// if errors not empty
+	if(!empty($errors)) {
+		return $errors;
+	// if there're no errors
+	} else {
+		// if currentpassword not equal 1; in other words if user is trying to change the current pw
+		if($current_password!==1) {
+
+			$username = $user['username'];
+			$user_from_db = find_user_by_username($username); // assoc. array
+
+			// if current pw same as pw in db
+			if(password_verify($current_password, $user_from_db['hashed_password'])) {
+				// return empty errors array
+				return $errors;
+			} else {
+				// current pw doesn't match
+				$errors[] = "Password change unsuccessful.";
+				return $errors;
+			}
+		// if current user is trying to register (and not change pw)
+		} else {
+			// return empty errors array
+			return $errors;
+		}
+	}
 }
 function insert_user($user) {
 	global $db;
@@ -192,35 +220,22 @@ function update_user($user, $current_password) {
 		return $errors;
 	}
 
-	$username = $user['username'];
-	$user_from_db = find_user_by_username($username); // assoc. array
+	$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
-	if(password_verify($current_password, $user_from_db['hashed_password'])) {
-		// current pw matches. update user in db.
-		$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
-
-		$sql = "UPDATE users SET ";
-		$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
-		$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
-		$sql .= "LIMIT 1";
-		$result = mysqli_query($db, $sql);
-		
-		if($result) {
-			return true;
-		} else {
-			echo mysqli_error($db);
-			db_disconnect($db);
-			exit;
-		}
-
+	$sql = "UPDATE users SET ";
+	$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
+	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
+	$sql .= "LIMIT 1";
+	$result = mysqli_query($db, $sql);
+	
+	if($result) {
+		return true;
 	} else {
-		// current pw doesn't match
-		$errors[] = "Password change unsuccessful.";
+		echo mysqli_error($db);
+		db_disconnect($db);
+		exit;
 	}
 
-	if(!empty($errors)){
-		return $errors;
-	}
 
 }
 function delete_user($id) {
