@@ -130,10 +130,8 @@ function find_user_by_username($username) {
 	mysqli_free_result($result);
 	return $user; // returns assoc. array
 }
-function validate_user($user, $options=[]) {
+function validate_user($user) {
 	// username section
-	$password_required = $options['password_required'] ?? true;
-
 	if(is_blank($user['username'])) {
 		$errors[] = "Username cannot be blank.";
 	} elseif(!has_length($user['username'], ['min' => 3, 'max' => 50])) {
@@ -142,20 +140,16 @@ function validate_user($user, $options=[]) {
 		$errors[] = "Username not allowed. Try another.";
 	}
 	// password section
-	if($password_required) {
-		if(is_blank($user['password'])) {
-			$errors[] = "Password cannot be blank.";
-		} elseif(!has_length($user['password'], ['min' => 5])) {
-			$errors[] = "Password must have at least 6 characters.";
-		}
-
-		if(is_blank($user['confirm_password'])) {
-			$errors[] = "Confirm password cannot be blank.";
-		} elseif ($user['password'] !== $user['confirm_password']) {
-			$errors[] = 'Password and confirm passowrd must match.';
-		}
+	if(is_blank($user['password'])) {
+		$errors[] = "Password cannot be blank.";
+	} elseif(!has_length($user['password'], ['min' => 5])) {
+		$errors[] = "Password must have at least 6 characters.";
 	}
-
+	if(is_blank($user['confirm_password'])) {
+		$errors[] = "Confirm password cannot be blank.";
+	} elseif ($user['password'] !== $user['confirm_password']) {
+		$errors[] = 'Password and confirm password must match.';
+	}
 	return $errors;
 }
 function insert_user($user) {
@@ -186,9 +180,7 @@ function insert_user($user) {
 function update_user($user) {
 	global $db;
 
-	$password_sent = !is_blank($user['password']);
-
-	$errors = validate_user($user, ['password_required' => $password_sent]);
+	$errors = validate_user($user);
 	if(!empty($errors)){
 		return $errors;
 	}
@@ -196,10 +188,7 @@ function update_user($user) {
 	$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
 
 	$sql = "UPDATE users SET ";
-	if($password_sent) {
-		$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "', ";
-	}
-	$sql .= "username='" . db_escape($db, $user['username']) . "' ";
+	$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
 	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
 	$sql .= "LIMIT 1";
 	$result = mysqli_query($db, $sql);

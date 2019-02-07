@@ -21,7 +21,7 @@ $user = find_user_by_id($id);  // assoc. array
 
 	Username: <?php echo h($user['username']); ?> <br><br>
 
-	<a href="#">Update password</a> <br><br>
+	<a href="<?php echo WWW_ROOT . '/edit_user.php'; ?>">Update password</a> <br><br>
 	<a href="<? echo WWW_ROOT . "/delete_user.php?id=" . h(urlencode($user['id'])); ?>">Delete user</a> <br>
 
 </div>
