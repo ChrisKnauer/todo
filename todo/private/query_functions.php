@@ -130,7 +130,8 @@ function find_user_by_username($username) {
 	mysqli_free_result($result);
 	return $user; // returns assoc. array
 }
-function validate_user($user) {
+function validate_user($user, $currentpassword=1) { //new
+
 	// username section
 	if(is_blank($user['username'])) {
 		$errors[] = "Username cannot be blank.";
@@ -150,6 +151,11 @@ function validate_user($user) {
 	} elseif ($user['password'] !== $user['confirm_password']) {
 		$errors[] = 'Password and confirm password must match.';
 	}
+	//new
+	if(is_blank($currentpassword)) {
+		$errors[] = "Current password cannot be blank.";
+	}
+
 	return $errors;
 }
 function insert_user($user) {
@@ -177,29 +183,45 @@ function insert_user($user) {
 		exit;
 	}
 }
-function update_user($user) {
+function update_user($user, $current_password) {
 	global $db;
 
-	$errors = validate_user($user);
+	$errors = validate_user($user, $current_password);
+
 	if(!empty($errors)){
 		return $errors;
 	}
 
-	$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+	$username = $user['username'];
+	$user_from_db = find_user_by_username($username); // assoc. array
 
-	$sql = "UPDATE users SET ";
-	$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
-	$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
-	$sql .= "LIMIT 1";
-	$result = mysqli_query($db, $sql);
-	
-	if($result) {
-		return true;
+	if(password_verify($current_password, $user_from_db['hashed_password'])) {
+		// current pw matches. update user in db.
+		$hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+
+		$sql = "UPDATE users SET ";
+		$sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
+		$sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
+		$sql .= "LIMIT 1";
+		$result = mysqli_query($db, $sql);
+		
+		if($result) {
+			return true;
+		} else {
+			echo mysqli_error($db);
+			db_disconnect($db);
+			exit;
+		}
+
 	} else {
-		echo mysqli_error($db);
-		db_disconnect($db);
-		exit;
+		// current pw doesn't match
+		$errors[] = "Password change unsuccessful.";
 	}
+
+	if(!empty($errors)){
+		return $errors;
+	}
+
 }
 function delete_user($id) {
 	global $db;
