@@ -4,11 +4,12 @@ require_once('../private/initialize.php');
 
 require_login();
 
-if(!isset($_GET['id'])) {
-	header("Location: " . WWW_ROOT . "/index.php");
-}
+// if(!isset($_GET['id'])) {
+// 	header("Location: " . WWW_ROOT . "/index.php");
+// }
 
-$id = $_GET['id'];
+//$id = $_GET['id'];
+$id = $_SESSION['user_id'];
 
 if(is_post_request()) {
 	$result = delete_user($id);
@@ -16,7 +17,7 @@ if(is_post_request()) {
 	// die needed else session msg won't display
 	die(header("Location: " . WWW_ROOT . "/index.php"));
 } else {
-	$user = find_user_by_id($id);  // TODO: change this to redirect to index
+	$user = find_user_by_id($id);
 }
 
 
