@@ -10,6 +10,15 @@ function find_all_items() {
 	confirm_result_set($result);
 	return $result;
 }
+function find_all_itmes_by_user_id($user_id) {
+	global $db;
+
+	$sql = "SELECT * FROM items ";
+	$sql .= "WHERE user_id='" . db_escape($db, $user_id) . "'";
+	$result = mysqli_query($db, $sql);
+	confirm_result_set($result);
+	return $result;
+}
 function find_item_by_id($id) {
 	global $db;
 
@@ -32,7 +41,7 @@ function validate_item($description) {
 
 	return $errors;
 }
-function insert_item($description) {
+function insert_item($description, $user_id) {
 	global $db;
 
 	$errors = validate_item($description);
@@ -41,9 +50,10 @@ function insert_item($description) {
 	}
 
 	$sql = "INSERT INTO items ";
-	$sql .= "(description) ";
+	$sql .= "(description, user_id) ";
 	$sql .= "VALUES (";
-	$sql .= "'" . db_escape($db, $description) . "'";
+	$sql .= "'" . db_escape($db, $description) . "',";
+	$sql .= "'" . db_escape($db, $user_id) . "'";
 	$sql .= ")";
 	$result = mysqli_query($db, $sql); // For INSERT statements, $result is true/false
 	if($result) {

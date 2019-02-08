@@ -4,13 +4,16 @@ require_once('../private/initialize.php');
 
 require_login();
 
+$user_id = $_SESSION['user_id'];
+
 if(is_post_request()) {
 
 	// if add-item-form has been submitted
 	if (isset($_POST['description'])) {
 		
 		$item_description = $_POST['description'];
-		$result = insert_item($item_description); // $result is true/false
+		
+		$result = insert_item($item_description, $user_id); // $result is true/false
 		if($result === true) {
 			// re-direct prevents re-submission on re-load
 			header("Location: " . WWW_ROOT . "/list.php");
@@ -29,7 +32,8 @@ if(is_post_request()) {
 	}
 }
 
-$item_set = find_all_items();
+// $item_set = find_all_items();
+$item_set = find_all_itmes_by_user_id($user_id);
 
 $page_title = 'TODO';
 $h2 = 'to-do list';
