@@ -7,11 +7,9 @@ function log_in_user($user) {
 	$_SESSION['username'] = $user['username'];
 	return true;
 }
-
 function is_logged_in() {
 	return isset($_SESSION['user_id']);
 }
-
 function require_login() {
 	if(!is_logged_in()) {
 		header("Location: " . WWW_ROOT . "/index.php");

@@ -51,7 +51,6 @@ include(SHARED_PATH . '/header.php');
 
 ?>
 
-
 <div id='content'>
 
 	<?php echo display_errors($errors); ?>
@@ -68,9 +67,7 @@ include(SHARED_PATH . '/header.php');
 
 	<a href="<?php echo WWW_ROOT . '/register.php' ?>">Register</a>
 
-
 </div>
-
 
 <?php
 include(SHARED_PATH . '/footer.php');

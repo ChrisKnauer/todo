@@ -19,7 +19,6 @@ if(is_post_request()) {
 			header("Location: " . WWW_ROOT . "/list.php");
 		} else {
 			$errors = $result;
-			//var_dump($errors); //testing
 		}
 	}
 
@@ -32,7 +31,6 @@ if(is_post_request()) {
 	}
 }
 
-// $item_set = find_all_items();
 $item_set = find_all_itmes_by_user_id($user_id);
 
 $page_title = 'TODO';
@@ -49,7 +47,6 @@ include(SHARED_PATH . '/header_login.php');
 		<input type="text" name="description"> 
 		<input type="submit" value="Add item">
 	</form>
-
 
 	<table>
 		<tr>

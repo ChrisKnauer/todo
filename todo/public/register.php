@@ -54,5 +54,4 @@ if(is_post_request()) {
 
 </div>
 
-
 <?php include(SHARED_PATH . "/footer.php"); ?>

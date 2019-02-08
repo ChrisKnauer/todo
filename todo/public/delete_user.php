@@ -4,11 +4,6 @@ require_once('../private/initialize.php');
 
 require_login();
 
-// if(!isset($_GET['id'])) {
-// 	header("Location: " . WWW_ROOT . "/index.php");
-// }
-
-//$id = $_GET['id'];
 $id = $_SESSION['user_id'];
 
 if(is_post_request()) {
@@ -19,7 +14,6 @@ if(is_post_request()) {
 } else {
 	$user = find_user_by_id($id);
 }
-
 
 $page_title = 'Delete User';
 $h2 = 'Delete user';

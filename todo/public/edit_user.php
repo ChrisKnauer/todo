@@ -18,7 +18,6 @@ if(is_post_request()) {
 		//var_dump($errors);
 	}
 
-
 	$user = [];
 	$user['id'] = $_SESSION['user_id'];
 	$user['username'] = $_SESSION['username'];

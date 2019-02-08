@@ -245,8 +245,6 @@ function update_user($user, $current_password) {
 		db_disconnect($db);
 		exit;
 	}
-
-
 }
 function delete_user($id) {
 	global $db;

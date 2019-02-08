@@ -30,7 +30,6 @@ if(is_post_request()) {
 		header("Location:" . WWW_ROOT . "/list.php");
 	} else {
 		$errors = $result;
-		//var_dump($errors); // testing 
 	}
 
 } else {
