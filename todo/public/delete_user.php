@@ -15,25 +15,23 @@ if(is_post_request()) {
 	$user = find_user_by_id($id);
 }
 
-$page_title = 'Delete User';
-$h2 = 'Delete user';
+$page_title = 'Konto löschen';
+$h2 = 'Konto löschen';
 include(SHARED_PATH . '/header_login.php');
 
 ?>
 
 <div id="content">
 
-	<a href="<?php echo WWW_ROOT. '/list.php' ?>">&laquo; Back to List</a>
-
-	<p>Are you sure you want to delete this user account?</p>
-	<p><?php echo h($user['username']); ?></p>
+	<p>Sind Sie sicher das Sie dieses Konto löschen möchten?</p>
+	<p>Benutzer: <?php echo h($user['username']); ?></p>
 
 	<form action="<?php echo WWW_ROOT . '/delete_user.php?id=' . h(urlencode($user['id'])); ?>" method="post">
 
-		<input type="submit" value="Delete User">
+		<input type="submit" value="Konto löschen">
 
 	</form>
-
+	<a href="#">nein, nicht löschen</a>
 </div>
 
 <?php

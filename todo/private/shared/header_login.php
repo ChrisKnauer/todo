@@ -17,7 +17,8 @@ if(!isset($page_title)) {$page_title = 'ToDo';}
 		<h2><?php echo h($h2) ?></h2>
 		<nav>
 			<a href="<?php echo WWW_ROOT . '/show_user.php'; ?>"> User: </a> <?php echo $_SESSION['username'] ?? ''; ?>
-			<a href="<?php echo WWW_ROOT . '/logout.php'; ?>">Logout</a>
+			<a href="<?php echo WWW_ROOT . '/logout.php'; ?>">Logout</a><br>
+			<a href="<?php echo WWW_ROOT . '/list.php' ?>">&laquo;zur Liste</a> <br><br>
 		</nav>
 	</header>
 

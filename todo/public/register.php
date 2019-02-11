@@ -4,8 +4,8 @@ require_once("../private/initialize.php");
 
 log_out_user();
 
-$title = "Registration";
-$h2 = "Create User";
+$page_title = "Konto Erstellung";
+$h2 = "Konto erstellen";
 
 include(SHARED_PATH . "/header.php");
 
@@ -39,18 +39,18 @@ if(is_post_request()) {
 
 	<form action="<?php echo WWW_ROOT . '/register.php'  ?>" method="post">
 
-		Username:<br>
+		<!-- Username:<br> -->
 		<input type="text" name="username" value="<?php echo h($user['username']); ?>"><br>
-		Password:<br>
+		<!-- Password:<br> -->
 		<input type="password" name="password" value=""><br>
-		Confirm password:<br>
+		<!-- Confirm password:<br> -->
 		<input type="password" name="confirm_password" value=""><br>
-		<p>Password should be at least 6 characters.</p>
-		<input type="submit" value="Register"></input>
+		<!-- <p>Password should be at least 6 characters.</p> -->
+		<input type="submit" value="Weiter"></input>
 
 	</form><br>
 
-	<a href="<?php echo WWW_ROOT . '/index.php'  ?>">&laquo; Already have a username</a>
+	<a href="<?php echo WWW_ROOT . '/index.php'  ?>">bereits ein Konto</a>
 
 </div>
 

@@ -4,8 +4,8 @@ require_once('../private/initialize.php');
 
 require_login();
 
-$page_title = 'EDIT USER';
-$h2 = 'Edit password';
+$page_title = 'Passwort ändern';
+$h2 = 'Passwort ändern';
 include(SHARED_PATH . '/header_login.php');
 
 if(is_post_request()) {
@@ -41,14 +41,14 @@ if(is_post_request()) {
 	<?php echo display_errors($errors); ?>
 
 	<form action="<?php echo WWW_ROOT . '/edit_user.php';  ?>" method="post">
-		Current password:<br>
+		<!-- Current password:<br> -->
 		<input type="password" name="current_password"><br>
-		New password:<br>
+		<!-- New password:<br> -->
 		<input type="password" name="password"><br>
-		Confirm new password:<br>
+		<!-- Confirm new password:<br> -->
 		<input type="password" name="confirm_password"><br>
-		<p>Password should be at least 6 characters.</p>
-		<input type="submit" value="Update password">
+		<!-- <p>Password should be at least 6 characters.</p> -->
+		<input type="submit" value="Passwort ändern">
 	</form>
 </div>
 

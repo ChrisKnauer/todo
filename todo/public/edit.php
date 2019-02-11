@@ -4,7 +4,7 @@ require_once('../private/initialize.php');
 
 require_login();
 
-$h2 = 'Edit Item';
+$h2 = 'Eintrag ändern';
 include(SHARED_PATH . '/header_login.php');
 // if no id is set redirect to list.php
 if (!isset($_GET['id'])) {
@@ -48,7 +48,7 @@ if(is_post_request()) {
 	<form action="<?php WWW_ROOT . '/edit.php' ?>" method="post">
 		
 		<input type="text" name="description" value="<?php echo h($item['description']) ?>">
-		<button>Edit</button>
+		<button>ändern</button>
 
 	</form>
 

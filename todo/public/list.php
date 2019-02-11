@@ -33,8 +33,8 @@ if(is_post_request()) {
 
 $item_set = find_all_itmes_by_user_id($user_id);
 
-$page_title = 'TODO';
-$h2 = 'to-do list';
+$page_title = 'ToDo';
+$h2 = 'Meine Liste';
 include(SHARED_PATH . '/header_login.php');
 ?>
 
@@ -49,7 +49,7 @@ include(SHARED_PATH . '/header_login.php');
 
 	<table>
 		<tr>
-			<th>description</th>
+			<!-- <th>description</th> -->
 			<th></th>
 			<th></th>
 		</tr>

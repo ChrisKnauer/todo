@@ -45,8 +45,8 @@ if(is_post_request()) {
 }
 
 
-$page_title = 'Login';
-$h2 = 'Login';
+$page_title = 'Anmeldung';
+$h2 = 'Anmeldung';
 include(SHARED_PATH . '/header.php');
 
 ?>
@@ -57,15 +57,15 @@ include(SHARED_PATH . '/header.php');
 
 	<form action="<?php echo WWW_ROOT . '/index.php'?>" method="post">
 
-		Username<br>
+		<!-- Username<br> -->
 		<input type="text" name="username"><br>
-		Password<br>
+		<!-- Password<br> -->
 		<input type="password" name="password" value=""><br>
-		<input type="submit" name="submit" value="Continue">
+		<input type="submit" name="submit" value="Weiter">
 
 	</form><br>
 
-	<a href="<?php echo WWW_ROOT . '/register.php' ?>">Register</a>
+	<a href="<?php echo WWW_ROOT . '/register.php' ?>">registrieren</a>
 
 </div>
 
