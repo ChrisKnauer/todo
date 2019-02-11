@@ -35,7 +35,6 @@ $item_set = find_all_itmes_by_user_id($user_id);
 
 $page_title = 'TODO';
 $h2 = 'to-do list';
-include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');
 ?>
 

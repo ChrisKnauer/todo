@@ -6,7 +6,6 @@ require_login();
 
 $page_title = 'EDIT USER';
 $h2 = 'Edit password';
-include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');
 
 if(is_post_request()) {

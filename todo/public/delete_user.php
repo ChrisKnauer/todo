@@ -17,7 +17,6 @@ if(is_post_request()) {
 
 $page_title = 'Delete User';
 $h2 = 'Delete user';
-include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');
 
 ?>

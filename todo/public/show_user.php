@@ -6,7 +6,6 @@ require_login();
 
 $page_title = 'USER';
 $h2 = 'User details';
-include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');
 
 

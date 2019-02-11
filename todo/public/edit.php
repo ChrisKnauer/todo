@@ -5,7 +5,6 @@ require_once('../private/initialize.php');
 require_login();
 
 $h2 = 'Edit Item';
-include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/header_login.php');
 // if no id is set redirect to list.php
 if (!isset($_GET['id'])) {
