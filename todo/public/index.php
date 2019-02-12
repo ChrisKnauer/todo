@@ -58,14 +58,18 @@ include(SHARED_PATH . '/header.php');
 	<form action="<?php echo WWW_ROOT . '/index.php'?>" method="post">
 
 		<!-- Username<br> -->
-		<input type="text" name="username"><br>
+		<input type="text" name="username" placeholder="Nutzername"><br>
 		<!-- Password<br> -->
-		<input type="password" name="password" value=""><br>
-		<input type="submit" name="submit" value="Weiter">
-
+		<input type="password" name="password" value="" placeholder="Passwort"><br>
+		<div class="row">
+			<div class="col text-right">
+		<input class="weiter" type="submit" name="submit" value="Weiter">
+			</div>
 	</form><br>
-
-	<a href="<?php echo WWW_ROOT . '/register.php' ?>">registrieren</a>
+			<div class="col order-first text-left">
+				<a class="side_text" href="<?php echo WWW_ROOT . '/register.php' ?>">registrieren</a>
+			</div>
+		</div>
 
 </div>
 
