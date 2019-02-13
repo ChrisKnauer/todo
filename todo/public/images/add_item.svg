@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45.057" height="45.705" viewBox="0 0 45.057 45.705">
+  <defs>
+    <filter id="teal_circle" x="0" y="0.648" width="45.057" height="45.057" filterUnits="userSpaceOnUse">
+      <feOffset dy="6" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.239"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0"/>
+      <stop offset="0.14" stop-opacity="0.631"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.23" stop-color="#fff" stop-opacity="0.012"/>
+      <stop offset="0.36" stop-color="#fff" stop-opacity="0.039"/>
+      <stop offset="0.47" stop-color="#fff" stop-opacity="0.102"/>
+      <stop offset="0.57" stop-color="#fff" stop-opacity="0.18"/>
+      <stop offset="0.67" stop-color="#fff" stop-opacity="0.278"/>
+      <stop offset="0.75" stop-color="#fff" stop-opacity="0.412"/>
+      <stop offset="0.83" stop-color="#fff" stop-opacity="0.561"/>
+      <stop offset="0.91" stop-color="#fff" stop-opacity="0.741"/>
+      <stop offset="0.98" stop-color="#fff" stop-opacity="0.929"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="Add_item" data-name="Add item" transform="translate(-114.648 -51)">
+    <g transform="matrix(1, 0, 0, 1, 114.65, 51)" filter="url(#teal_circle)">
+      <path id="teal_circle-2" data-name="teal circle" d="M13.529,0A13.529,13.529,0,1,1,0,13.529,13.529,13.529,0,0,1,13.529,0Z" transform="translate(9 3.65)" fill="#35a6e8"/>
+    </g>
+    <g id="ic_add_white" transform="translate(132.357 63.357)">
+      <path id="ic_add_white-2" data-name="ic_add_white" d="M3433.639,985.508h-4.131v4.131h-1.377v-4.131H3424v-1.377h4.131V980h1.377v4.131h4.131Z" transform="translate(-3424 -980)" fill="#fff"/>
+    </g>
+    <g id="Group_334" data-name="Group 334" transform="translate(120 51)" opacity="0.12">
+      <path id="gradient_border_2" data-name="gradient border 2" d="M3420.025,959.3a16.721,16.721,0,1,1-16.721,16.721,16.721,16.721,0,0,1,16.721-16.721m0-.3a17.025,17.025,0,1,0,17.025,17.025A17.025,17.025,0,0,0,3420.025,959Z" transform="translate(-3403 -959)" fill="url(#linear-gradient)"/>
+      <path id="gradient_border_1" data-name="gradient border 1" d="M3420.025,959.3a16.721,16.721,0,1,1-16.721,16.721,16.721,16.721,0,0,1,16.721-16.721m0-.3a17.025,17.025,0,1,0,17.025,17.025A17.025,17.025,0,0,0,3420.025,959Z" transform="translate(-3403 -959)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

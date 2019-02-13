@@ -2,7 +2,13 @@
   Reset/Base CSS
 ============================================================ */
 
-/*no need, we're using bootstrap*/
+/*removes underscore when hovering over svg img*/
+a:link {
+	text-decoration: none;
+}
+h2 {
+	margin: 0;
+}
 
 /* ============================================================
   Global Rules
@@ -23,14 +29,14 @@ body {
 h2 {
 	font-size: 22px;
 
-	/*border: 1px solid green;*/
+	border: 1px solid green;
 }
 form {
 	text-align: center;
 	max-width: 367px;
 	margin: 0 auto;
 
-	/*border: 1px solid green;*/
+	border: 1px solid green;
 }
 input {
 	width: 100%;
@@ -55,6 +61,10 @@ header {
 
 	/*border: 1px solid green;*/
 }
+.header_main {
+
+	border: 1px solid green;
+}
 #content {
 
 	/*border: 1px solid green;*/
@@ -69,6 +79,21 @@ footer {
 	color: ##939997;
 
 	/*border: 1px solid green;*/
+}
+/*center content vertically*/
+.vertical_center {
+	display: flex;  /* make row a flex container */
+	align-items: center;
+	/*height required also*/
+}
+.no_left_padding {
+	padding-left: 0px;
+}
+.no_right_padding {
+	padding-right: 0px;
+}
+.hide {
+	display: none;
 }
 /* ============================================================
   Component Rules
@@ -97,6 +122,42 @@ footer {
 	color: #fff;
 	border: none;
 	background-color: #35A6E8;
+}
+.header_row {
+	height: 60px;
+}
+.user_svg, .exit_svg {
+	width: 30px;
+	height: 30px;
+	fill: #707070;
+	opacity: .61;
+	margin-left: 10px;
+}
+.add_item_svg {
+	margin-top: 8px;
+	height: 50px;
+	width: 50px;
+	padding: 0px;
+	opacity: .8;
+}
+.input_add_item {
+	margin-bottom: 70px;
+}
+.item_txt {
+	font-size: 16px;
+	color: #263B47;
+	word-wrap: break-word;
+}
+.edit_item_svg {
+	opacity: .9;
+}
+.row_item {
+	max-width: 680px;
+	margin: 8px auto;
+
+	height: auto;
+
+	border: 1px solid red;
 }
 /* ============================================================
   END Component Rules

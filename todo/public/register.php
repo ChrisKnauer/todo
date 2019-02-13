@@ -40,18 +40,21 @@ if(is_post_request()) {
 	<form action="<?php echo WWW_ROOT . '/register.php'  ?>" method="post">
 
 		<!-- Username:<br> -->
-		<input type="text" name="username" value="<?php echo h($user['username']); ?>"><br>
+		<input type="text" name="username" placeholder="Nutzername" value="<?php echo h($user['username']); ?>"><br>
 		<!-- Password:<br> -->
-		<input type="password" name="password" value=""><br>
+		<input type="password" name="password" placeholder="Passwort" value=""><br>
 		<!-- Confirm password:<br> -->
-		<input type="password" name="confirm_password" value=""><br>
+		<input type="password" name="confirm_password" placeholder="Bestätigen" value=""><br>
 		<!-- <p>Password should be at least 6 characters.</p> -->
-		<input type="submit" value="Weiter"></input>
-
+		<div class="row">
+			<div class="col text-right">
+		<input class="weiter" type="submit" value="Weiter"></input>
+			</div>
 	</form><br>
-
-	<a href="<?php echo WWW_ROOT . '/index.php'  ?>">bereits ein Konto</a>
-
+			<div class="col order-first text-left">
+	<a class="side_text" href="<?php echo WWW_ROOT . '/index.php'  ?>">bereits ein Konto</a>
+			</div>
+		</div>
 </div>
 
 <?php include(SHARED_PATH . "/footer.php"); ?>
