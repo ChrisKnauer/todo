@@ -63,7 +63,7 @@ include(SHARED_PATH . '/header.php');
 		<input type="password" name="password" value="" placeholder="Passwort"><br>
 		<div class="row">
 			<div class="col text-right">
-		<input class="weiter" type="submit" name="submit" value="Weiter">
+		<input class="button" type="submit" name="submit" value="Weiter">
 			</div>
 	</form><br>
 			<div class="col order-first text-left">

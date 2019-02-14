@@ -46,9 +46,18 @@ if(is_post_request()) {
 	<?php echo display_errors($errors); ?>
 
 	<form action="<?php WWW_ROOT . '/edit.php' ?>" method="post">
-		
-		<input type="text" name="description" value="<?php echo h($item['description']) ?>">
-		<button>ändern</button>
+<!-- if txt is larger than, then display textarea -->
+		<?php if (strlen(h($item['description'])) > 22) {;?>
+
+			<textarea name="description"><?php echo h($item['description']) ?></textarea>
+
+		<?php } else { ;  ?>
+
+			<input type="text" name="description" value="<?php echo h($item['description']) ?>">
+
+		<?php } ;  ?>
+
+		<input class="button float-right" type="submit" value="ändern">
 
 	</form>
 

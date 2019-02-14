@@ -38,7 +38,7 @@ form {
 
 	border: 1px solid green;
 }
-input {
+input, textarea {
 	width: 100%;
 	height: 52px;
 	padding-left: 24px;
@@ -46,8 +46,23 @@ input {
 	border: 0.5px solid #bac7cf;
 	margin-bottom: 28px;
 }
+textarea {
+	height: 100px;
+	padding-top: 10px;
+	padding-right: 15px;
+}
 input::placeholder {
 	opacity: .3;
+}
+.button {
+	height: 35px;
+	padding: 0px;
+	color: #fff;
+	border: none;
+	background-color: #35A6E8;
+	width: auto;
+	padding-left: 16px;
+	padding-right: 16px;
 }
 /* ============================================================
   Layout
@@ -114,14 +129,6 @@ footer {
 	padding-left: 24px;
 	color: #939997;
 	font-size: 16px;
-}
-.weiter {
-	max-width: 87px;
-	height: 35px;
-	padding: 0px;
-	color: #fff;
-	border: none;
-	background-color: #35A6E8;
 }
 .header_row {
 	height: 60px;

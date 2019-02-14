@@ -48,7 +48,7 @@ if(is_post_request()) {
 		<!-- <p>Password should be at least 6 characters.</p> -->
 		<div class="row">
 			<div class="col text-right">
-		<input class="weiter" type="submit" value="Weiter"></input>
+		<input class="button" type="submit" value="Weiter"></input>
 			</div>
 	</form><br>
 			<div class="col order-first text-left">
