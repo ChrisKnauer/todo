@@ -9,7 +9,6 @@ a:link {
 h2 {
 	margin: 0;
 }
-
 /* ============================================================
   Global Rules
 ============================================================ */
@@ -23,20 +22,14 @@ body {
     min-height: 100vh;
     position: relative;
     padding-bottom: 220px;
-
-    /*border: 5px solid green;*/
 }
 h2 {
 	font-size: 22px;
-
-	border: 1px solid green;
 }
 form {
 	text-align: center;
 	max-width: 367px;
 	margin: 0 auto;
-
-	border: 1px solid green;
 }
 input, textarea {
 	width: 100%;
@@ -64,6 +57,23 @@ input::placeholder {
 	padding-left: 16px;
 	padding-right: 16px;
 }
+.message {
+	text-align: center;
+	max-width: 367px;
+	margin: 60px auto;
+	margin-top: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border: 2.5px solid #35A6E8;
+	border-radius: 7px;
+	color: #35A6E8;
+	font-weight: 600;
+}
+.message_errors {
+	color: #D14545;
+	border-color: #D14545;
+	font-size: 16px;
+}
 /* ============================================================
   Layout
 ============================================================ */
@@ -73,12 +83,6 @@ header {
 .header_welcome {
 	text-align: center;
 	padding-top: 108px;
-
-	/*border: 1px solid green;*/
-}
-.header_main {
-
-	border: 1px solid green;
 }
 #content {
 
@@ -161,8 +165,6 @@ footer {
 .row_item {
 	max-width: 680px;
 	margin: 8px auto;
-
-	border: 1px solid red;
 }
 .wrapper_user_settings {
 	max-width: 367px;
@@ -197,6 +199,27 @@ footer {
 }
 .arrow_right {
 	margin-left: 10px;
+}
+.wrapper_delete_user {
+	max-width: 367px;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 0.5px solid #BAC7CF;
+	padding-bottom: 13px;
+	margin-bottom: 55px;
+}
+.side_text_delete_user {
+	padding: 0px;
+	max-width: 367px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 55px;
+}
+.side_text_delete_user_v2 {
+	padding: 0px;
+}
+.button_delete {
+	background-color: #D14545;
 }
 /* ============================================================
   END Component Rules

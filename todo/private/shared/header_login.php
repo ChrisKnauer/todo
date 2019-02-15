@@ -14,7 +14,7 @@ if(!isset($page_title)) {$page_title = 'ToDo';}
 </head>
 <body>
 <div class="container-fluid">
-	<header class="header_main">
+	<header>
 		<div class="row vertical_center header_row"> <!-- start row -->
 			<div class="col-7">
 				<h2><?php echo h($h2) ?></h2>
@@ -46,4 +46,3 @@ if(!isset($page_title)) {$page_title = 'ToDo';}
 	</header>
 
 	<?php echo display_session_message(); ?>
-

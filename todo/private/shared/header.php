@@ -22,3 +22,4 @@ if(!isset($page_title)) {$page_title = 'ToDo';}
 	</header>
 
 	<?php echo display_session_message(); ?>
+

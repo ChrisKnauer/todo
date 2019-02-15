@@ -35,7 +35,8 @@ if(is_post_request()) {
 	// if it's not a post request...use the one from db and use it to insert into form field
 	$item = find_item_by_id($id);
 	// if get request, and the items user id is not equal sessions user id, then redirect to list
-	if($item['user_id'] !== $_SESSION['user_id']) {
+	// can't use strict equal because not same type (string vs int)
+	if($item['user_id'] != $_SESSION['user_id']) {
 		header("Location:" . WWW_ROOT . "/list.php");
 	};
 }

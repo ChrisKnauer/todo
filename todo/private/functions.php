@@ -10,12 +10,12 @@ function is_post_request() {
 function display_errors($errors=array()) {
 	$output = '';
 	if(!empty($errors)) {
-		$output = "Please fix the following errors:<br>";
+		$output = "<div class='message message_errors'> Bitte korrigieren Sie folgende Fehler:<br><br>";
 		$output .= "<ul>";
 		foreach ($errors as $error) {
 			$output .= "<li>" . h($error) . "</li>";
 		}
-		$output .= "</ul>";
+		$output .= "</ul></div>";
 	}
 	return $output;
 }
@@ -29,6 +29,6 @@ function get_and_clear_session_message() {
 function display_session_message() {
 	$msg = get_and_clear_session_message();
 	if(!is_blank($msg)) {
-		return '<div id="message">' . h($msg). '</div>';
+		return '<div class="message">' . h($msg). '</div>';
 	}
 }

@@ -19,7 +19,7 @@ if(is_post_request()) {
 	if($result === true) {
 		$user['id'] = mysqli_insert_id($db); // new
 		log_in_user($user); // new
-		$_SESSION['message'] = 'User created.';
+		$_SESSION['message'] = 'Nutzerkonto erstellt.';
 		header("Location: " . WWW_ROOT . "/list.php"); 
 	} else {
 		$errors = $result;

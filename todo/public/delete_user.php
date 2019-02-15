@@ -8,7 +8,7 @@ $id = $_SESSION['user_id'];
 
 if(is_post_request()) {
 	$result = delete_user($id);
-	$_SESSION['message'] = 'User deleted.';
+	$_SESSION['message'] = 'Nutzerkonto wurde gelöscht.';
 	// die needed else session msg won't display
 	die(header("Location: " . WWW_ROOT . "/index.php"));
 } else {
@@ -21,17 +21,30 @@ include(SHARED_PATH . '/header_login.php');
 
 ?>
 
-<div id="content">
 
-	<p>Sind Sie sicher das Sie dieses Konto löschen möchten?</p>
-	<p>Benutzer: <?php echo h($user['username']); ?></p>
+<div class="wrapper_delete_user">
+	<div class="description_txt"">
+		Benutzer
+	</div>
+	<div class="user_settings_txt">
+		<?php echo h($user['username']); ?>
+	</div>
+</div>
 
-	<form action="<?php echo WWW_ROOT . '/delete_user.php?id=' . h(urlencode($user['id'])); ?>" method="post">
+<div class="side_text side_text_delete_user">
+	Dieses Konto löschen?
+</div>
 
-		<input type="submit" value="Konto löschen">
 
-	</form>
-	<a href="#">nein, nicht löschen</a>
+<form action="<?php echo WWW_ROOT . '/delete_user.php?id=' . h(urlencode($user['id'])); ?>" method="post">
+<div class="row">
+	<div class="col-5 text-right">
+		<input class="button button_delete" type="submit" value="Löschen">
+	</div>
+</form>
+	<div class="col-7 order-first text-left margin">
+		<a class="side_text side_text_delete_user_v2" href="#">nein, nicht löschen</a>
+	</div>
 </div>
 
 <?php

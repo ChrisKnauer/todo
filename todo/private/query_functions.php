@@ -34,9 +34,9 @@ function validate_item($description) {
 	$errors = [];
 
 	if(is_blank($description)) {
-		$errors[] = "Description cannot be blank.";
+		$errors[] = "Eintrag kann nicht leer sein.";
 	} elseif(!has_length($description, ['min' => 2, 'max' => 50])) {
-		$errors[] = "Description must be between 2 and 50 characters.";
+		$errors[] = "Eintrag muss zwischen 2 and 50 Buchstaben haben.";
 	}
 
 	return $errors;
@@ -144,28 +144,28 @@ function validate_user($user, $current_password=1) { //new
 
 	// username section
 	if(is_blank($user['username'])) {
-		$errors[] = "Username cannot be blank.";
+		$errors[] = "Nutzername kann nicht leer sein.";
 	} elseif(!has_length($user['username'], ['min' => 3, 'max' => 50])) {
-		$errors[] = "Username must be between 4 and 50 characters.";
+		$errors[] = "Nutzername muss zwischen 4 and 50 Zeichen haben.";
 	} elseif (!has_unique_username($user['username'], $user['id'] ?? 0)) {
-		$errors[] = "Username not allowed. Try another.";
+		$errors[] = "Nutzername nicht erlaubt. Versuche einen anderen.";
 	}
 	// password section
 
 	//new
 	if(is_blank($current_password)) {
-		$errors[] = "Current password cannot be blank.";
+		$errors[] = "Aktuelles Passwort kann nicht leer sein.";
 	}
 
 	if(is_blank($user['password'])) {
-		$errors[] = "Password cannot be blank.";
+		$errors[] = "Passwort kann nicht leer sein.";
 	} elseif(!has_length($user['password'], ['min' => 5])) {
-		$errors[] = "Password must have at least 6 characters.";
+		$errors[] = "Passwort muss mindestens 6 Zeichen haben.";
 	}
 	if(is_blank($user['confirm_password'])) {
-		$errors[] = "Confirm password cannot be blank.";
+		$errors[] = "Passwort bestätigen kann nicht leer sein.";
 	} elseif ($user['password'] !== $user['confirm_password']) {
-		$errors[] = 'Password and confirm password must match.';
+		$errors[] = "Passwort und Bestätigung müssen übereinstimmen.";
 	}
 
 	// new
@@ -186,7 +186,7 @@ function validate_user($user, $current_password=1) { //new
 				return $errors;
 			} else {
 				// current pw doesn't match
-				$errors[] = "Password change unsuccessful.";
+				$errors[] = "Passwortänderung fehlgeschlagen.";
 				return $errors;
 			}
 		// if current user is trying to register (and not change pw)

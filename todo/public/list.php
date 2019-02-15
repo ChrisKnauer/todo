@@ -97,7 +97,7 @@ include(SHARED_PATH . '/header_login.php');
 		</div> <!-- end row -->
 	</form>
 
-	<table>
+	<table> <!-- TODO: take out table -->
 
 
 	<?php // loop through result set
