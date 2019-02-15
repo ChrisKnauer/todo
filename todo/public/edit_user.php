@@ -40,15 +40,11 @@ if(is_post_request()) {
 
 	<?php echo display_errors($errors); ?>
 
-	<form action="<?php echo WWW_ROOT . '/edit_user.php';  ?>" method="post">
-		<!-- Current password:<br> -->
-		<input type="password" name="current_password"><br>
-		<!-- New password:<br> -->
-		<input type="password" name="password"><br>
-		<!-- Confirm new password:<br> -->
-		<input type="password" name="confirm_password"><br>
-		<!-- <p>Password should be at least 6 characters.</p> -->
-		<input type="submit" value="Passwort ändern">
+	<form style="text-align: right;" action="<?php echo WWW_ROOT . '/edit_user.php';  ?>" method="post">
+		<input type="password" name="current_password" placeholder="Aktuelles Passwort">
+		<input type="password" name="password" placeholder="Aktuelles Passwort">
+		<input type="password" name="confirm_password" placeholder="Bestätigen">
+		<input class="button" type="submit" value="Passwort ändern">
 	</form>
 </div>
 
