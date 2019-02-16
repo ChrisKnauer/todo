@@ -7,18 +7,15 @@ function db_connect() {
 	confirm_db_connect();
 	return $connection;
 }
-
 function db_disconnect($connection) {
 	// if there's a connection, close it, else no need to
 	if(isset($connection)) {
 		mysqli_close($connection);
 	}
 }
-
 function db_escape($connection, $string) {
 	return mysqli_real_escape_string($connection, $string);
 }
-
 function confirm_db_connect() {
 	if(mysqli_connect_errno()) {
 		$msg = "Database connection failed: ";
@@ -27,7 +24,6 @@ function confirm_db_connect() {
 		exit($msg);
 	}
 }
-
 function confirm_result_set($result_set) {
 	if (!$result_set) {
 		exit("Database query failed.");

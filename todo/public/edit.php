@@ -42,27 +42,25 @@ if(is_post_request()) {
 }
 ?>
 
-<div id='content'>
 
-	<?php echo display_errors($errors); ?>
 
-	<form action="<?php WWW_ROOT . '/edit.php' ?>" method="post">
-<!-- if txt is larger than, then display textarea -->
-		<?php if (strlen(h($item['description'])) > 22) {;?>
+<?php echo display_errors($errors); ?>
 
-			<textarea name="description"><?php echo h($item['description']) ?></textarea>
+<form action="<?php WWW_ROOT . '/edit.php' ?>" method="post">
+	<!-- if txt is larger than, then display textarea -->
+	<?php if (strlen(h($item['description'])) > 22) {;?>
 
-		<?php } else { ;  ?>
+		<textarea name="description"><?php echo h($item['description']) ?></textarea>
 
-			<input type="text" name="description" value="<?php echo h($item['description']) ?>">
+	<?php } else { ;  ?>
 
-		<?php } ;  ?>
+		<input type="text" name="description" value="<?php echo h($item['description']) ?>">
 
-		<input class="button float-right" type="submit" value="ändern">
+	<?php } ;  ?>
 
-	</form>
+	<input class="button float-right" type="submit" value="ändern">
 
-</div>
+</form>
 
 
 

@@ -43,7 +43,7 @@ include(SHARED_PATH . '/header_login.php');
 	</div>
 </form>
 	<div class="col-7 order-first text-left margin">
-		<a class="side_text side_text_delete_user_v2" href="#">nein, nicht löschen</a>
+		<a class="side_text side_text_delete_user_v2" href="<?php echo WWW_ROOT . '/list.php' ?>">nein, nicht löschen</a>
 	</div>
 </div>
 

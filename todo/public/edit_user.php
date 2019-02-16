@@ -29,24 +29,21 @@ if(is_post_request()) {
 		header("Location: " . WWW_ROOT . "/show_user.php");
 	} else {
 		$errors = $result;
-			//var_dump($errors);
 	}
 }
 
 ?>
 
 
-<div id="content">
+<?php echo display_errors($errors); ?>
 
-	<?php echo display_errors($errors); ?>
+<form style="text-align: right;" action="<?php echo WWW_ROOT . '/edit_user.php';  ?>" method="post">
+	<input type="password" name="current_password" placeholder="Aktuelles Passwort">
+	<input type="password" name="password" placeholder="Neues Passwort">
+	<input type="password" name="confirm_password" placeholder="Bestätigen">
+	<input class="button" type="submit" value="Passwort ändern">
+</form>
 
-	<form style="text-align: right;" action="<?php echo WWW_ROOT . '/edit_user.php';  ?>" method="post">
-		<input type="password" name="current_password" placeholder="Aktuelles Passwort">
-		<input type="password" name="password" placeholder="Neues Passwort">
-		<input type="password" name="confirm_password" placeholder="Bestätigen">
-		<input class="button" type="submit" value="Passwort ändern">
-	</form>
-</div>
 
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

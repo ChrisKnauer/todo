@@ -38,7 +38,7 @@ function validate_item($description) {
 	} elseif(!has_length($description, ['min' => 2, 'max' => 50])) {
 		$errors[] = "Eintrag muss zwischen 2 and 50 Buchstaben haben.";
 	}
-
+	
 	return $errors;
 }
 function insert_item($description, $user_id) {

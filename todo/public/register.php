@@ -33,28 +33,26 @@ if(is_post_request()) {
 ?>
 
 
-<div id="content">
+<?php echo display_errors($errors); ?>
 
-	<?php echo display_errors($errors); ?>
+<form action="<?php echo WWW_ROOT . '/register.php'  ?>" method="post">
 
-	<form action="<?php echo WWW_ROOT . '/register.php'  ?>" method="post">
+	<input type="text" name="username" placeholder="Nutzername" value="<?php echo h($user['username']); ?>">
 
-		<!-- Username:<br> -->
-		<input type="text" name="username" placeholder="Nutzername" value="<?php echo h($user['username']); ?>"><br>
-		<!-- Password:<br> -->
-		<input type="password" name="password" placeholder="Passwort" value=""><br>
-		<!-- Confirm password:<br> -->
-		<input type="password" name="confirm_password" placeholder="Bestätigen" value=""><br>
-		<!-- <p>Password should be at least 6 characters.</p> -->
-		<div class="row">
-			<div class="col text-right">
-		<input class="button" type="submit" value="Weiter"></input>
-			</div>
-	</form><br>
-			<div class="col order-first text-left">
-	<a class="side_text" href="<?php echo WWW_ROOT . '/index.php'  ?>">bereits ein Konto</a>
-			</div>
+	<input type="password" name="password" placeholder="Passwort" value="">
+
+	<input type="password" name="confirm_password" placeholder="Bestätigen" value="">
+
+	<div class="row">
+		<div class="col text-right">
+	<input class="button" type="submit" value="Weiter"></input>
 		</div>
-</div>
+</form>
+
+		<div class="col order-first text-left">
+<a class="side_text" href="<?php echo WWW_ROOT . '/index.php'  ?>">bereits ein Konto</a>
+		</div>
+	</div>
+
 
 <?php include(SHARED_PATH . "/footer.php"); ?>
